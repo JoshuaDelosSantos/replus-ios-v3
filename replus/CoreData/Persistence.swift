@@ -10,12 +10,12 @@ import CoreData
 import Foundation
 
 
-class PersistenceController {
+class PersistenceController: ObservableObject{
     static let shared = PersistenceController()
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "replus")
+        container = NSPersistentContainer(name: "Replus")
         
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null") // Use in-memory store for previews
