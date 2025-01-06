@@ -10,13 +10,20 @@ import CoreData
 import Foundation
 
 
-class PersistenceController: ObservableObject {
-    let container = NSPersistentContainer(name: "Replus")
-    
-    init () {
+class PersistenceController {
+    static let shared = PersistenceController()
+    let container: NSPersistentContainer
+
+    init(inMemory: Bool = false) {
+        container = NSPersistentContainer(name: "replus")
+        
+        if inMemory {
+            container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null") // Use in-memory store for previews
+        }
+
         container.loadPersistentStores { description, error in
             if let error = error {
-                print("Core Data failed to load: \(error.localizedDescription)")
+                fatalError("Unresolved error \(error), \(error.localizedDescription)")
             }
         }
     }
