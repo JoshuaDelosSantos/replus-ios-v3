@@ -11,11 +11,10 @@ import Foundation
 
 
 class PersistenceController: ObservableObject{
-    static let shared = PersistenceController()
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "Replus")
+        container = NSPersistentContainer(name: "ReplusModel")
         
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null") // Use in-memory store for previews
@@ -23,7 +22,7 @@ class PersistenceController: ObservableObject{
 
         container.loadPersistentStores { description, error in
             if let error = error {
-                fatalError("Unresolved error \(error), \(error.localizedDescription)")
+                print("Persistence: Unresolved error \(error), \(error.localizedDescription)")
             }
         }
     }
