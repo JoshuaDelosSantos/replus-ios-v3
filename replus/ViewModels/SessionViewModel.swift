@@ -17,6 +17,7 @@ class SessionViewModel: ObservableObject {
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
+        fetchSessions()
     }
     
     func fetchSessions() {
@@ -25,11 +26,35 @@ class SessionViewModel: ObservableObject {
         do {
             // Fetch sessions from core data
             sessions = try moc.fetch(request)
-            print("Fetched \(sessions.count) sessions")
+            print("SessionViewModel: Fetched \(sessions.count) sessions")
             
         } catch {
             // Log Error
             print("SessionViewModel: Failed to fetch sessions: \(error.localizedDescription)")
+        }
+    }
+    
+    func addSession(name: String) {
+        let newSession = Session(context: moc)
+        
+        do {
+            newSession.id = UUID()
+            newSession.name = name
+            newSession.modifiedAt = Date()
+            
+            try saveContext()
+            
+            // Log
+            print("SessionViewModel: Added \(newSession.name ?? "Unknown")")
+            fetchSessions()
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func saveContext() throws {
+        if moc.hasChanges {
+            try moc.save()
         }
     }
 }
