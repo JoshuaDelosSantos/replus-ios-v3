@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 
-struct SessionListView: View { 
+struct SessionListView: View {
     let moc: NSManagedObjectContext
     
     @StateObject private var viewModel: SessionViewModel
@@ -23,23 +23,37 @@ struct SessionListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.sessions) { session in
-                    Text("\(session.name ?? "Unamed Session") - Date: \(String(describing: session.modifiedAt))")
+                // No sessions
+                if viewModel.sessions.isEmpty {
+                    Text("No sessions available")
+                        .foregroundColor(.gray)  // Theme
+                        .padding()
+                } else {
+                    List(viewModel.sessions) { session in
+                        SessionCardView(session: session)
+                            .padding()
+                    }
                 }
-                
-                Button("Add") {
-                    // Log
-                    print("SessionListViewModel: Add button pressed")
-                    viewModel.addSession(name: "New Session")
+            }
+            .navigationTitle("Sessions")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {addSession()}) {
+                        Label("Add", systemImage: "plus")
+                    }
                 }
             }
             .onAppear {
                 viewModel.fetchSessions()
-                
-                // Log
-                print("SessionListView: Fetched Sessions")
+                print("SessionListView: Fetched Sessions")  // Log
             }
         }
+    }
+    
+    
+    private func addSession(name: String = "Unknown Session") {
+        print("SessionListViewModel: Add button pressed")  // Log
+        viewModel.addSession(name: name)
     }
 }
 
