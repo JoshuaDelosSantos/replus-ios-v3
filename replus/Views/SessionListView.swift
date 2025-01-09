@@ -14,6 +14,7 @@ struct SessionListView: View {
     let moc: NSManagedObjectContext
     
     @StateObject private var viewModel: SessionViewModel
+    @State private var isShowingAddSessionSheet: Bool = false
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
@@ -31,14 +32,13 @@ struct SessionListView: View {
                 } else {
                     List(viewModel.sessions) { session in
                         SessionCardView(session: session)
-                            .padding()
                     }
                 }
             }
             .navigationTitle("Sessions")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {addSession()}) {
+                    Button(action: {isShowingAddSessionSheet = true}) {
                         Label("Add", systemImage: "plus")
                     }
                 }
@@ -47,13 +47,10 @@ struct SessionListView: View {
                 viewModel.fetchSessions()
                 print("SessionListView: Fetched Sessions")  // Log
             }
+            .sheet(isPresented: $isShowingAddSessionSheet) {
+                AddSessionView(moc: moc)
+            }
         }
-    }
-    
-    
-    private func addSession(name: String = "Unknown Session") {
-        print("SessionListViewModel: Add button pressed")  // Log
-        viewModel.addSession(name: name)
     }
 }
 
