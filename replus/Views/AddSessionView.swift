@@ -44,6 +44,7 @@ struct AddSessionView: View {
                     Button("Add") {
                         Task {await addSession()}
                     }
+                    .disabled(sessionName.isEmpty || isSaving)
                 }
             }
         }
