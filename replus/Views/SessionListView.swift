@@ -16,6 +16,7 @@ struct SessionListView: View {
     @State private var isShowingAddSessionSheet: Bool = false
     @State private var isEditing: Bool = false
     @State private var isShowingEditSessionSheet: Bool = false
+    @State private var selectedSession: Session? = nil
     
     init(viewModel: SessionViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -42,14 +43,15 @@ struct SessionListView: View {
                 AddSessionView(viewModel: viewModel)
             }
             .sheet(isPresented: $isShowingEditSessionSheet) {
-                EditSessionView(viewModel: viewModel)
+                if let session = selectedSession {
+                    EditSessionView(viewModel: viewModel, session: session)
+                }
             }
         }
     }
     
     private func displaySessions() -> some View {
         VStack {
-            // No sessions
             if viewModel.sessions.isEmpty {
                 Text("No sessions available")
                     .foregroundColor(.gray)  // Theme
@@ -58,7 +60,7 @@ struct SessionListView: View {
                 List(viewModel.sessions) { session in
                     HStack {
                         if isEditing {
-                            displayRenameButton()
+                            displayRenameButton(session: session)
                         }
                         SessionCardView(session: session)
                     }
@@ -71,8 +73,11 @@ struct SessionListView: View {
             isEditing.toggle()
     }
     
-    private func displayRenameButton() -> some View {
-        Button(action: {isShowingEditSessionSheet = true}) {
+    private func displayRenameButton(session: Session) -> some View {
+        Button(action: {
+            isShowingEditSessionSheet = true
+            selectedSession = session
+        }) {
             Image(systemName: "pencil")
                 .foregroundColor(.blue)
                 .imageScale(.large)
