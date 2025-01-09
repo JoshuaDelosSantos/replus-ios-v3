@@ -52,6 +52,20 @@ class SessionViewModel: ObservableObject {
         }
     }
     
+    func updateSession(session: Session, newName: String) {
+        do {
+            session.name = newName
+            session.modifiedAt = Date()
+            
+            try saveContext()
+            
+            print("SessionViewModel: Updated Session")
+            fetchSessions()
+        } catch {
+            print(error)
+        }
+    }
+    
     private func saveContext() throws {
         if moc.hasChanges {
             try moc.save()
