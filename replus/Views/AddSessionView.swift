@@ -53,8 +53,9 @@ struct AddSessionView: View {
         defer { isSaving = false}
         
         viewModel.addSession(name: sessionName)
-        
         print("AddSessionView: Added session")  // Log
+        
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
