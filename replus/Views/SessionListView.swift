@@ -11,14 +11,12 @@ import CoreData
 
 
 struct SessionListView: View {
-    let moc: NSManagedObjectContext
     
     @StateObject private var viewModel: SessionViewModel
     @State private var isShowingAddSessionSheet: Bool = false
     
-    init(moc: NSManagedObjectContext) {
-        self.moc = moc
-        _viewModel = StateObject(wrappedValue: SessionViewModel(moc: moc))
+    init(viewModel: SessionViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -43,12 +41,8 @@ struct SessionListView: View {
                     }
                 }
             }
-            .onAppear {
-                viewModel.fetchSessions()
-                print("SessionListView: Fetched Sessions")  // Log
-            }
             .sheet(isPresented: $isShowingAddSessionSheet) {
-                AddSessionView(moc: moc)
+                AddSessionView(viewModel: viewModel)
             }
         }
     }
@@ -57,6 +51,7 @@ struct SessionListView: View {
 
 #Preview {
     let persistenceController = PersistenceController(inMemory: true)
+    let viewModel = SessionViewModel(moc: persistenceController.container.viewContext)
 
-    SessionListView(moc: persistenceController.container.viewContext)
+    SessionListView(viewModel: viewModel)
 }

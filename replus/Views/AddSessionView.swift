@@ -11,15 +11,13 @@ import CoreData
 
 
 struct AddSessionView: View {
-    let moc: NSManagedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel: SessionViewModel
     @State private var sessionName: String = ""
     @State private var isSaving = false
     
-    init(moc: NSManagedObjectContext) {
-        self.moc = moc
-        _viewModel = StateObject(wrappedValue: SessionViewModel(moc: moc))
+    init(viewModel: SessionViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -63,6 +61,7 @@ struct AddSessionView: View {
 
 #Preview {
     let persistenceController = PersistenceController(inMemory: true)
+    let viewModel = SessionViewModel(moc: persistenceController.container.viewContext)
     
-    AddSessionView(moc: persistenceController.container.viewContext)
+    AddSessionView(viewModel: viewModel)
 }
