@@ -21,18 +21,7 @@ struct SessionListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                // No sessions
-                if viewModel.sessions.isEmpty {
-                    Text("No sessions available")
-                        .foregroundColor(.gray)  // Theme
-                        .padding()
-                } else {
-                    List(viewModel.sessions) { session in
-                        SessionCardView(session: session)
-                    }
-                }
-            }
+            displaySession()
             .navigationTitle("Sessions")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -46,6 +35,22 @@ struct SessionListView: View {
             }
         }
     }
+    
+    private func displaySession() -> some View {
+        VStack {
+            // No sessions
+            if viewModel.sessions.isEmpty {
+                Text("No sessions available")
+                    .foregroundColor(.gray)  // Theme
+                    .padding()
+            } else {
+                List(viewModel.sessions) { session in
+                    SessionCardView(session: session)
+                }
+            }
+        }
+    }
+    
 }
 
 
