@@ -45,7 +45,7 @@ class SessionViewModel: ObservableObject {
             try saveContext()
             
             // Log
-            print("SessionViewModel: Added \(newSession.name ?? "Unknown")")
+            print("SessionViewModel: Added Session = \(newSession.name ?? "Unknown")")
             fetchSessions()
         } catch {
             print(error)
