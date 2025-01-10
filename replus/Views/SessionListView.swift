@@ -22,7 +22,7 @@ struct SessionListView: View {
 // MARK: - Variables
     @StateObject private var viewModel: SessionViewModel
     @State private var sheetConfig: SheetConfig?
-    @State private var selectedSession: Session? = nil
+    @State private var selectedSessionID: UUID? = nil
     @State private var isEditing: Bool = false
 
 // MARK: - Initialiser.
@@ -55,8 +55,12 @@ struct SessionListView: View {
                     case .add:
                         AddSessionView(viewModel: viewModel)
                     case .edit:
-                        let session = selectedSession!
-                        EditSessionView(viewModel: viewModel, session: session)
+                        if viewModel.sessionToUpdate != nil {
+                            EditSessionView(viewModel: viewModel)
+                        } else {
+                            // Fallback UI if `selectedSession` is nil
+                            Text("No session selected for editing.")  // Log
+                        }
                     }
                 })
         }
@@ -86,9 +90,14 @@ struct SessionListView: View {
             isEditing.toggle()
     }
     
-// MARK: - Edit (Rename)
+// MARK: - Edit (Rename Button)
     private func displayRenameButton(session: Session) -> some View {
-        Button(action: {sheetConfig = .edit}) {
+        Button(action: {
+            viewModel.selectSession(id: session.id!)
+            print("SessionListView: selectedSession = \(String(describing: session.name))")  // Log
+            
+            sheetConfig = .edit
+        }) {
             Image(systemName: "pencil")
                 .foregroundColor(.blue)
                 .imageScale(.large)
