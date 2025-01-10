@@ -59,7 +59,7 @@ struct SessionListView: View {
                             EditSessionView(viewModel: viewModel)
                         } else {
                             // Fallback UI if `selectedSession` is nil
-                            Text("No session selected for editing.")  // Log
+                            Text("No session selected for editing.")
                         }
                     }
                 })
@@ -94,7 +94,7 @@ struct SessionListView: View {
     private func displayRenameButton(session: Session) -> some View {
         Button(action: {
             viewModel.selectSession(id: session.id!)
-            print("SessionListView: selectedSession = \(String(describing: session.name))")  // Log
+            print("SessionListView: Session to update = \(String(describing: session.name))")  // Log
             
             sheetConfig = .edit
         }) {
