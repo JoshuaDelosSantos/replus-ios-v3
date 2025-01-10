@@ -19,7 +19,8 @@ class SessionViewModel: ObservableObject {
         self.moc = moc
         fetchSessions()
     }
-    
+
+// MARK: - Fetch Sessions.
     func fetchSessions() {
         let request: NSFetchRequest<Session> = Session.fetchRequest()
         
@@ -33,7 +34,8 @@ class SessionViewModel: ObservableObject {
             print("SessionViewModel: Failed to fetch sessions: \(error.localizedDescription)")
         }
     }
-    
+
+// MARK: - Adding a Session.
     func addSession(name: String) {
         let newSession = Session(context: moc)
         
@@ -51,21 +53,41 @@ class SessionViewModel: ObservableObject {
             print(error)
         }
     }
-    
-    func updateSession(session: Session, newName: String) {
+
+// MARK: - Updating a Session.
+    func updateSession(id: UUID, newName: String) {
+        guard let session = getSessionById(id) else {
+            print("SessionViewModel: No session found with id \(id)")
+            return
+        }
+        
         do {
             session.name = newName
             session.modifiedAt = Date()
             
             try saveContext()
             
-            print("SessionViewModel: Updated Session")
+            print("SessionViewModel: Updated session \(session.name ?? "Unknown")")
             fetchSessions()
         } catch {
-            print(error)
+            print("SessionViewModel: Failed to update session: \(error.localizedDescription)")
         }
     }
     
+    private func getSessionById(_ id: UUID) -> Session? {
+        let request: NSFetchRequest<Session> = Session.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        request.fetchLimit = 1
+        
+        do {
+            return try moc.fetch(request).first
+        } catch {
+            print("SessionViewModel: Failed to fetch session by id: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+// MARK: - Saving Context.
     private func saveContext() throws {
         if moc.hasChanges {
             try moc.save()
