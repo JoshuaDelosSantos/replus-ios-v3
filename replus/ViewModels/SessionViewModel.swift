@@ -25,14 +25,18 @@ class SessionViewModel: ObservableObject {
     func fetchSessions() {
         let request: NSFetchRequest<Session> = Session.fetchRequest()
         
+        // Logging
+        let sessionNames = sessions.compactMap { $0.name }
+        print("SessionViewModel: Session names: \(sessionNames.joined(separator: ", "))")  // Log
+        
         do {
             // Fetch sessions from core data
             sessions = try moc.fetch(request)
-            print("SessionViewModel: Fetched \(sessions.count) sessions")
+            print("SessionViewModel: Fetched \(sessions.count) sessions")  // Log
             
         } catch {
             // Log Error
-            print("SessionViewModel: Failed to fetch sessions: \(error.localizedDescription)")
+            print("SessionViewModel: Failed to fetch sessions: \(error.localizedDescription)")  // Log
         }
     }
 
@@ -47,8 +51,7 @@ class SessionViewModel: ObservableObject {
             
             try saveContext()
             
-            // Log
-            print("SessionViewModel: Added Session = \(newSession.name ?? "Unknown")")
+            print("SessionViewModel: Added Session = \(newSession.name ?? "Unknown")")  // Log
             fetchSessions()
         } catch {
             print(error)
@@ -58,7 +61,7 @@ class SessionViewModel: ObservableObject {
 // MARK: - Updating a Session.
     func updateSession(newName: String) {
         guard let session = sessionToUpdate else {
-            print("SessionViewModel: No session available to update.")
+            print("SessionViewModel: No session available to update.")  // Log
             return
         }
         
@@ -68,10 +71,10 @@ class SessionViewModel: ObservableObject {
             
             try saveContext()
             
-            print("SessionViewModel: Updated session \(session.name ?? "Unknown")")
+            print("SessionViewModel: Updated session to \(session.name ?? "Unknown")")  // Log
             fetchSessions()
         } catch {
-            print("SessionViewModel: Failed to update session: \(error.localizedDescription)")
+            print("SessionViewModel: Failed to update session: \(error.localizedDescription)")  // Log
         }
     }
     
@@ -79,11 +82,16 @@ class SessionViewModel: ObservableObject {
     func selectSession(id: UUID) {
         sessionToUpdate = getSessionById(id)
         if sessionToUpdate == nil {
-            print("SessionViewModel: No session found with id \(id)")
+            print("SessionViewModel: No session found with id \(id)")  // Log
         }
     }
     
+    func getSelectedSessionName() -> String? {
+        sessionToUpdate?.name
+    }
+    
     private func getSessionById(_ id: UUID) -> Session? {
+        print("SessionViewModel: Grabbing session by ID...")  // Log
         let request: NSFetchRequest<Session> = Session.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         request.fetchLimit = 1
@@ -91,7 +99,7 @@ class SessionViewModel: ObservableObject {
         do {
             return try moc.fetch(request).first
         } catch {
-            print("SessionViewModel: Failed to fetch session by id: \(error.localizedDescription)")
+            print("SessionViewModel: Failed to fetch session by id: \(error.localizedDescription)")  // Log
             return nil
         }
     }
