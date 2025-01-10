@@ -14,6 +14,7 @@ class SessionViewModel: ObservableObject {
     private let moc: NSManagedObjectContext
     
     @Published var sessions: [Session] = []
+    @Published var sessionToUpdate: Session? = nil
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
@@ -55,9 +56,9 @@ class SessionViewModel: ObservableObject {
     }
 
 // MARK: - Updating a Session.
-    func updateSession(id: UUID, newName: String) {
-        guard let session = getSessionById(id) else {
-            print("SessionViewModel: No session found with id \(id)")
+    func updateSession(newName: String) {
+        guard let session = sessionToUpdate else {
+            print("SessionViewModel: No session available to update.")
             return
         }
         
@@ -71,6 +72,14 @@ class SessionViewModel: ObservableObject {
             fetchSessions()
         } catch {
             print("SessionViewModel: Failed to update session: \(error.localizedDescription)")
+        }
+    }
+    
+    
+    func selectSession(id: UUID) {
+        sessionToUpdate = getSessionById(id)
+        if sessionToUpdate == nil {
+            print("SessionViewModel: No session found with id \(id)")
         }
     }
     
