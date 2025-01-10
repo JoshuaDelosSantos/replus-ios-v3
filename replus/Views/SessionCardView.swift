@@ -12,14 +12,19 @@ import SwiftUI
 
 struct SessionCardView: View {
     let session: Session
+    let sessionName: String
+    
+    init(session: Session) {
+        self.session = session
+        self.sessionName = session.name ?? "Unknown Session"
+    }
     
     var body: some View {
-        Text(session.name ?? "Unamed Session")
+        Text(sessionName)
             .font(.headline)
             .padding()
             .onAppear {
-                //Log
-                print("SessionCardView: Session ID: \(String(describing: session.id)), Name: \(session.name ?? "Unnamed")")
+                print("SessionCardView: Session ID: \(String(describing: session.id)), Name: \(session.name ?? "Unnamed")")  //Log
             }
     }
 }
