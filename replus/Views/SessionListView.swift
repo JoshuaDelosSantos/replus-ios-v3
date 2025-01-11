@@ -75,11 +75,9 @@ struct SessionListView: View {
                     .padding()
             } else {
                 List {
-                    ForEach(viewModel.sessions) { session in
+                    ForEach(viewModel.sessions, id: \.id) { session in
                         HStack {
                             if isEditing {
-                                displayDeleteButton(session: session)
-                                Spacer().frame(width:25)
                                 displayRenameButton(session: session)
                             }
                             SessionCardView(session: session)
@@ -98,10 +96,12 @@ struct SessionListView: View {
 // MARK: - Edit (Rename Button)
     private func displayRenameButton(session: Session) -> some View {
         Button(action: {
+            print("SessionListView: Rename button pressed")  // Log
             viewModel.selectSession(id: session.id!)
             print("SessionListView: Session to update = \(String(describing: session.name))")  // Log
             
             sheetConfig = .edit
+            toggleEditMode()
         }) {
             Image(systemName: "pencil")
                 .foregroundColor(.blue)
@@ -110,7 +110,10 @@ struct SessionListView: View {
     }
     
     private func displayDeleteButton(session: Session) -> some View {
-        Button(action: {}) {
+        Button(action: {
+            print("SessionListView: Delete button pressed")  // Log
+            viewModel.deleteSession(session)
+        }) {
             Image(systemName: "trash")
                 .foregroundColor(.red)
                 .imageScale(.large)
@@ -126,8 +129,6 @@ struct SessionListView: View {
     }
     
 }
-
-
 
 
 #Preview {
