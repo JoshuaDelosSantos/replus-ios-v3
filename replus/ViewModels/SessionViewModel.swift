@@ -92,7 +92,9 @@ class SessionViewModel: ObservableObject {
     
 // MARK: - Delete a Session.
     func deleteSession(_ session: Session) {
+        print("SessionViewModel: Deleting session...")
         moc.delete(session)  // Delete session from Core Data
+        print("SessionViewModel: Session deleted")
         
         do {
             try saveContext()  // Save changes
@@ -107,7 +109,9 @@ class SessionViewModel: ObservableObject {
 // MARK: - Helper functions.
     private func saveContext() throws {
         if moc.hasChanges {
+            print("SessionViewModel: Saving changes...")  // Log
             try moc.save()
+            print("SessionViewModel: Changes saved")  // Log
         }
     }
     
