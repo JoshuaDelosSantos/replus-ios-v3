@@ -90,6 +90,27 @@ class SessionViewModel: ObservableObject {
         sessionToUpdate?.name
     }
     
+// MARK: - Delete a Session.
+    func deleteSession(_ session: Session) {
+        moc.delete(session)  // Delete session from Core Data
+        
+        do {
+            try saveContext()  // Save changes
+            print("SessionViewModel: Deleted session with name \(session.name ?? "Unknown")")
+            fetchSessions()  // Refresh sessions
+        } catch {
+            print("SessionViewModel: Failed to delete session: \(error.localizedDescription)")
+        }
+    }
+    
+
+// MARK: - Helper functions.
+    private func saveContext() throws {
+        if moc.hasChanges {
+            try moc.save()
+        }
+    }
+    
     private func getSessionById(_ id: UUID) -> Session? {
         print("SessionViewModel: Grabbing session by ID...")  // Log
         let request: NSFetchRequest<Session> = Session.fetchRequest()
@@ -101,13 +122,6 @@ class SessionViewModel: ObservableObject {
         } catch {
             print("SessionViewModel: Failed to fetch session by id: \(error.localizedDescription)")  // Log
             return nil
-        }
-    }
-
-// MARK: - Saving Context.
-    private func saveContext() throws {
-        if moc.hasChanges {
-            try moc.save()
         }
     }
 }
