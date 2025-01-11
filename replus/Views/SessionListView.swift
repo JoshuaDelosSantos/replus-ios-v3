@@ -18,12 +18,15 @@ enum SheetConfig: Int, Identifiable {
     case edit
 }
 
+
 struct SessionListView: View {
 // MARK: - Variables
     @StateObject private var viewModel: SessionViewModel
     @State private var sheetConfig: SheetConfig?
     @State private var selectedSessionID: UUID? = nil
     @State private var isEditing: Bool = false
+    @State private var showDeleteConfirmation: Bool = false
+    @State private var sessionToDelete: Session? = nil
 
 // MARK: - Initialiser.
     init(viewModel: SessionViewModel) {
@@ -55,7 +58,7 @@ struct SessionListView: View {
                     case .add:
                         AddSessionView(viewModel: viewModel)
                     case .edit:
-                        if viewModel.sessionToUpdate != nil {
+                        if viewModel.sessionToMark != nil {
                             EditSessionView(viewModel: viewModel)
                         } else {
                             // Fallback UI if `selectedSession` is nil
@@ -63,6 +66,21 @@ struct SessionListView: View {
                         }
                     }
                 })
+                .alert(isPresented: $showDeleteConfirmation) {
+                    Alert(
+                        title: Text("Delete Session"),
+                        message: Text("Are you sure you want to delete this session? This action cannot be undone."),
+                        primaryButton: .destructive(Text("Delete")) {
+                            if let session = sessionToDelete {
+                                viewModel.deleteSession(session: session)
+                                sessionToDelete = nil
+                            }
+                        },
+                        secondaryButton: .cancel {
+                            sessionToDelete = nil
+                        }
+                    )
+                }
         }
     }
     
@@ -78,19 +96,21 @@ struct SessionListView: View {
                     ForEach(viewModel.sessions, id: \.id) { session in
                         HStack {
                             if isEditing {
+                                displayDeleteButton(session: session)
+                                    .padding(.trailing, 8)
                                 displayRenameButton(session: session)
                             }
                             SessionCardView(session: session)
                         }
                     }
-                    .onDelete(perform: deleteSession(at:))
+                    .onDelete(perform: deleteSession)
                 }
             }
         }
     }
 
     private func toggleEditMode() {
-            isEditing.toggle()
+        isEditing.toggle()
     }
     
 // MARK: - Edit (Rename Button)
@@ -112,7 +132,7 @@ struct SessionListView: View {
     private func displayDeleteButton(session: Session) -> some View {
         Button(action: {
             print("SessionListView: Delete button pressed")  // Log
-            viewModel.deleteSession(session)
+            viewModel.selectSession(id: session.id!)
         }) {
             Image(systemName: "trash")
                 .foregroundColor(.red)
@@ -123,9 +143,9 @@ struct SessionListView: View {
 // MARK: - Delete Session
     private func deleteSession(at offsets: IndexSet) {
         withAnimation {
-            offsets.forEach { index in
-                let session = viewModel.sessions[index]
-                viewModel.deleteSession(session)
+            if let index = offsets.first {
+                    sessionToDelete = viewModel.sessions[index]
+                    showDeleteConfirmation = true
             }
         }
     }
