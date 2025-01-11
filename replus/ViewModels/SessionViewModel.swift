@@ -14,7 +14,7 @@ class SessionViewModel: ObservableObject {
     private let moc: NSManagedObjectContext
     
     @Published var sessions: [Session] = []
-    @Published var sessionToUpdate: Session? = nil
+    @Published var sessionToMark: Session? = nil
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
@@ -60,7 +60,7 @@ class SessionViewModel: ObservableObject {
 
 // MARK: - Updating a Session.
     func updateSession(newName: String) {
-        guard let session = sessionToUpdate else {
+        guard let session = sessionToMark else {
             print("SessionViewModel: No session available to update.")  // Log
             return
         }
@@ -80,14 +80,14 @@ class SessionViewModel: ObservableObject {
     
     
     func selectSession(id: UUID) {
-        sessionToUpdate = getSessionById(id)
-        if sessionToUpdate == nil {
+        sessionToMark = getSessionById(id)
+        if sessionToMark == nil {
             print("SessionViewModel: No session found with id \(id)")  // Log
         }
     }
     
     func getSelectedSessionName() -> String? {
-        sessionToUpdate?.name
+        sessionToMark?.name
     }
     
 // MARK: - Delete a Session.
