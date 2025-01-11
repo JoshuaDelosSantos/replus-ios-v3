@@ -78,6 +78,8 @@ struct SessionListView: View {
                     ForEach(viewModel.sessions) { session in
                         HStack {
                             if isEditing {
+                                displayDeleteButton(session: session)
+                                Spacer().frame(width:25)
                                 displayRenameButton(session: session)
                             }
                             SessionCardView(session: session)
@@ -103,6 +105,14 @@ struct SessionListView: View {
         }) {
             Image(systemName: "pencil")
                 .foregroundColor(.blue)
+                .imageScale(.large)
+        }
+    }
+    
+    private func displayDeleteButton(session: Session) -> some View {
+        Button(action: {}) {
+            Image(systemName: "trash")
+                .foregroundColor(.red)
                 .imageScale(.large)
         }
     }
