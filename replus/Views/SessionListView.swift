@@ -74,13 +74,16 @@ struct SessionListView: View {
                     .foregroundColor(.gray)  // Theme
                     .padding()
             } else {
-                List(viewModel.sessions) { session in
-                    HStack {
-                        if isEditing {
-                            displayRenameButton(session: session)
+                List {
+                    ForEach(viewModel.sessions) { session in
+                        HStack {
+                            if isEditing {
+                                displayRenameButton(session: session)
+                            }
+                            SessionCardView(session: session)
                         }
-                        SessionCardView(session: session)
                     }
+                    .onDelete(perform: deleteSession(at:))
                 }
             }
         }
@@ -104,7 +107,17 @@ struct SessionListView: View {
         }
     }
     
+// MARK: - Delete Session
+    private func deleteSession(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let session = viewModel.sessions[index]
+            viewModel.deleteSession(session)
+        }
+    }
+    
 }
+
+
 
 
 #Preview {
