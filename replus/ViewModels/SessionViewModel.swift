@@ -92,16 +92,16 @@ class SessionViewModel: ObservableObject {
     
 // MARK: - Delete a Session.
     func deleteSession(_ session: Session) {
-        print("SessionViewModel: Deleting session...")
-        moc.delete(session)  // Delete session from Core Data
-        print("SessionViewModel: Session deleted")
+        print("SessionViewModel: Deleting session...")  // Log
+        moc.delete(session)
+        print("SessionViewModel: Session deleted")  // Log
         
         do {
-            try saveContext()  // Save changes
-            print("SessionViewModel: Deleted session with name \(session.name ?? "Unknown")")
-            fetchSessions()  // Refresh sessions
+            try saveContext()
+            print("SessionViewModel: Deleted session with name \(session.name ?? "Unknown")")  // Log
+            fetchSessions()
         } catch {
-            print("SessionViewModel: Failed to delete session: \(error.localizedDescription)")
+            print("SessionViewModel: Failed to delete session: \(error.localizedDescription)")  // Log
         }
     }
     
