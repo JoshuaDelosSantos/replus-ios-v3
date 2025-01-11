@@ -122,9 +122,11 @@ struct SessionListView: View {
     
 // MARK: - Delete Session
     private func deleteSession(at offsets: IndexSet) {
-        offsets.forEach { index in
-            let session = viewModel.sessions[index]
-            viewModel.deleteSession(session)
+        withAnimation {
+            offsets.forEach { index in
+                let session = viewModel.sessions[index]
+                viewModel.deleteSession(session)
+            }
         }
     }
     
