@@ -26,7 +26,6 @@ struct SessionListView: View {
     @State private var selectedSessionID: UUID? = nil
     @State private var isEditing: Bool = false
     @State private var showDeleteConfirmation: Bool = false
-    @State private var sessionToDelete: Session? = nil
 
 // MARK: - Initialiser.
     init(viewModel: SessionViewModel) {
@@ -71,13 +70,13 @@ struct SessionListView: View {
                         title: Text("Delete Session"),
                         message: Text("Are you sure you want to delete this session? This action cannot be undone."),
                         primaryButton: .destructive(Text("Delete")) {
-                            if let session = sessionToDelete {
-                                viewModel.deleteSession(session: session)
-                                sessionToDelete = nil
+                            if viewModel.sessionToMark != nil {
+                                viewModel.deleteSession()
+                                viewModel.sessionToMark = nil
                             }
                         },
                         secondaryButton: .cancel {
-                            sessionToDelete = nil
+                            viewModel.sessionToMark = nil
                         }
                     )
                 }
@@ -103,7 +102,7 @@ struct SessionListView: View {
                             SessionCardView(session: session)
                         }
                     }
-                    .onDelete(perform: deleteSession)
+                    .onDelete(perform: swipeDeleteSession)
                 }
             }
         }
@@ -129,10 +128,13 @@ struct SessionListView: View {
         }
     }
     
+// MARK: - Edit (Delete Button)
     private func displayDeleteButton(session: Session) -> some View {
         Button(action: {
             print("SessionListView: Delete button pressed")  // Log
-            viewModel.deleteSession(session: session)
+            let sessionID = session.id
+            viewModel.selectSession(id: sessionID!)
+            showDeleteConfirmation = true
             
             toggleEditMode()
         }) {
@@ -143,11 +145,12 @@ struct SessionListView: View {
     }
     
 // MARK: - Delete Session
-    private func deleteSession(at offsets: IndexSet) {
+    private func swipeDeleteSession(at offsets: IndexSet) {
         withAnimation {
             if let index = offsets.first {
-                    sessionToDelete = viewModel.sessions[index]
-                    showDeleteConfirmation = true
+                let sessionID = viewModel.sessions[index].id
+                viewModel.selectSession(id: sessionID!)
+                showDeleteConfirmation = true
             }
         }
     }
