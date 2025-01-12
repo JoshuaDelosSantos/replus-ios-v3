@@ -91,7 +91,12 @@ class SessionViewModel: ObservableObject {
     }
     
 // MARK: - Delete a Session.
-    func deleteSession(session: Session) {
+    func deleteSession() {
+        guard let session = sessionToMark else {
+            print("SessionViewModel: No session available to delete.")  // Log
+            return
+        }
+        
         print("SessionViewModel: Deleting session...")  // Log
         moc.delete(session)
         print("SessionViewModel: Session deleted")  // Log
