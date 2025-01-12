@@ -98,7 +98,7 @@ struct SessionListView: View {
                             if isEditing {
                                 displayDeleteButton(session: session)
                                     .padding(.trailing, 8)
-                                displayRenameButton(session: session)
+//                                displayRenameButton(session: session)
                             }
                             SessionCardView(session: session)
                         }
@@ -132,7 +132,9 @@ struct SessionListView: View {
     private func displayDeleteButton(session: Session) -> some View {
         Button(action: {
             print("SessionListView: Delete button pressed")  // Log
-            viewModel.selectSession(id: session.id!)
+            viewModel.deleteSession(session: session)
+            
+            toggleEditMode()
         }) {
             Image(systemName: "trash")
                 .foregroundColor(.red)
