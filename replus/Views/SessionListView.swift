@@ -55,7 +55,7 @@ struct SessionListView: View {
                         AddSessionView(viewModel: viewModel)
                     case .edit:
                         // Check if there is a marked session
-                        if viewModel.sessionToMark != nil {
+                        if hasMarkedSession() {
                             EditSessionView(viewModel: viewModel)
                         } else {
                             // Fallback UI if `selectedSession` is nil
@@ -69,7 +69,7 @@ struct SessionListView: View {
                         message: Text("Are you sure you want to delete this session? This action cannot be undone."),
                         primaryButton: .destructive(Text("Delete")) {
                             // Check if there is a marked session
-                            if viewModel.sessionToMark != nil {
+                            if hasMarkedSession() {
                                 deleteMarkedSession()
                                 viewModel.sessionToMark = nil
                             }
@@ -159,6 +159,11 @@ struct SessionListView: View {
     /// Delete the marked session in the viewModel.
     private func deleteMarkedSession() {
         viewModel.deleteSession()
+    }
+    
+    /// Determines if there is a marked session in the viewModel.
+    private func hasMarkedSession () -> Bool {
+        viewModel.sessionToMark != nil
     }
     
 }
