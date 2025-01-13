@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 
-// MARK: - Enum for .sheets().
+/// Enum class for .sheets() - Allows dynamic sheets with 1 call.
 enum SheetConfig: Int, Identifiable {
     var id: Int {return self.rawValue}
     
@@ -20,19 +20,16 @@ enum SheetConfig: Int, Identifiable {
 
 
 struct SessionListView: View {
-// MARK: - Variables
     @StateObject private var viewModel: SessionViewModel
     @State private var sheetConfig: SheetConfig?
     @State private var selectedSessionID: UUID? = nil
     @State private var isEditing: Bool = false
     @State private var showDeleteConfirmation: Bool = false
 
-// MARK: - Initialiser.
     init(viewModel: SessionViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
-// MARK: - Main.
     var body: some View {
         NavigationView {
             displaySessions()
@@ -57,6 +54,7 @@ struct SessionListView: View {
                     case .add:
                         AddSessionView(viewModel: viewModel)
                     case .edit:
+                        // Check if there is a marked session
                         if viewModel.sessionToMark != nil {
                             EditSessionView(viewModel: viewModel)
                         } else {
@@ -70,8 +68,9 @@ struct SessionListView: View {
                         title: Text("Delete Session"),
                         message: Text("Are you sure you want to delete this session? This action cannot be undone."),
                         primaryButton: .destructive(Text("Delete")) {
+                            // Check if there is a marked session
                             if viewModel.sessionToMark != nil {
-                                viewModel.deleteSession()
+                                deleteMarkedSession()
                                 viewModel.sessionToMark = nil
                             }
                         },
@@ -83,7 +82,6 @@ struct SessionListView: View {
         }
     }
     
-// MARK: - Display Sessions.
     private func displaySessions() -> some View {
         VStack {
             if viewModel.sessions.isEmpty {
@@ -112,11 +110,10 @@ struct SessionListView: View {
         isEditing.toggle()
     }
     
-// MARK: - Edit (Rename Button)
     private func displayRenameButton(session: Session) -> some View {
         Button(action: {
             print("SessionListView: Rename button pressed")  // Log
-            viewModel.selectSession(id: session.id!)
+            markSessionWithID(id: session.id!)
             print("SessionListView: Session to update = \(String(describing: session.name))")  // Log
             
             sheetConfig = .edit
@@ -128,14 +125,13 @@ struct SessionListView: View {
         }
     }
     
-// MARK: - Edit (Delete Button)
     private func displayDeleteButton(session: Session) -> some View {
         Button(action: {
             print("SessionListView: Delete button pressed")  // Log
             let sessionID = session.id
-            viewModel.selectSession(id: sessionID!)
-            showDeleteConfirmation = true
+            markSessionWithID(id: sessionID!)
             
+            showDeleteConfirmation = true
             toggleEditMode()
         }) {
             Image(systemName: "trash")
@@ -144,15 +140,25 @@ struct SessionListView: View {
         }
     }
     
-// MARK: - Delete Session
     private func swipeDeleteSession(at offsets: IndexSet) {
         withAnimation {
             if let index = offsets.first {
                 let sessionID = viewModel.sessions[index].id
-                viewModel.selectSession(id: sessionID!)
+                markSessionWithID(id: sessionID!)
+                
                 showDeleteConfirmation = true
             }
         }
+    }
+    
+    /// Store a marked session in the viewModel.
+    private func markSessionWithID(id: UUID) {
+        viewModel.selectSession(id: id)
+    }
+    
+    /// Delete the marked session in the viewModel.
+    private func deleteMarkedSession() {
+        viewModel.deleteSession()
     }
     
 }
