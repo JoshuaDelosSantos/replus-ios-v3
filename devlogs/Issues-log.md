@@ -7,9 +7,9 @@ This marked down file highlights all of the issues/problems I have faced develop
 **Code were not copy and pasted to AI to solve these problems.**
 AI was used as a general guide, by asking questions such as "how does .onAppear affect sheets?"
 
-## Issues:
+# Issues:
 
-### When returning to SessionListView after adding a session, the sessions list are not updated.
+### 1. When returning to SessionListView after adding a session, the sessions list are not updated.
 **FIXED**
 
 Thinking process:
@@ -18,7 +18,7 @@ Thinking process:
     - Instead of initialising the viewModel each file.
 - That seems to work!
 
-### Unable to show add or edit sheet. 
+### 2. Unable to show add or edit sheet. 
 **FIXED**
 
 Thinking process:
@@ -27,8 +27,7 @@ Thinking process:
 - Looked for youtube videos on how to display dynamic sheets.
 - **Used an enum class to be able to dynamically call which sheet is needed with 1 .sheet() call.**
 
-
-### Session object is not being passed into the EditSessionView sheet from SessionListView properly.
+### 3. Session object is not being passed into the EditSessionView sheet from SessionListView properly.
 **FIXED**
 
 Current workflow:
@@ -46,8 +45,8 @@ Current workflow:
 Thought process:
 - If I can't pass the object through the view, then I will just create a pivot in the viewModel.
     
-
-### SessionListView not updating session list after a session is renamed.
+ 
+### 4. SessionListView not updating session list after a session is renamed.
 **FIXED**
 
 - After adding multiple log statements in relative files.
@@ -56,7 +55,7 @@ Thought process:
 - Added an init in SessionCardView.
 
 
-### View is not updating when delete button in edit mode is pressed.
+### 5. View is not updating when delete button in edit mode is pressed.
 **WORKING PROGRESS...**
 - The swipe to delete works.
 - Edit mode delete button:
@@ -84,7 +83,7 @@ Code:
 - Which is my renameButton that is next to the delete button, which is tied to the cardView.
     
 
-### In edit mode, rename button is not recognised when pressed.
+### 6. In edit mode, rename button is not recognised when pressed.
 **WORKING PROGRESS...**
 - When in edit mode and I try to press the rename button.
 - It calls delete functionality instead.
