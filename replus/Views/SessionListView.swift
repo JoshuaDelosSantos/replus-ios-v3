@@ -73,11 +73,9 @@ struct SessionListView: View {
                                 deleteMarkedSession()
                                 
                                 viewModel.sessionToMark = nil
-                                toggleEditMode()
                             }
                         },
                         secondaryButton: .cancel {
-                            toggleEditMode()
                             viewModel.sessionToMark = nil
                         }
                     )
