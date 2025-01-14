@@ -71,10 +71,13 @@ struct SessionListView: View {
                             // Check if there is a marked session
                             if hasMarkedSession() {
                                 deleteMarkedSession()
+                                
                                 viewModel.sessionToMark = nil
+                                toggleEditMode()
                             }
                         },
                         secondaryButton: .cancel {
+                            toggleEditMode()
                             viewModel.sessionToMark = nil
                         }
                     )
@@ -95,7 +98,7 @@ struct SessionListView: View {
                             if isEditing {
                                 displayDeleteButton(session: session)
                                     .padding(.trailing, 8)
-//                                displayRenameButton(session: session)
+                                displayRenameButton(session: session)
                             }
                             SessionCardView(session: session)
                         }
@@ -111,32 +114,34 @@ struct SessionListView: View {
     }
     
     private func displayRenameButton(session: Session) -> some View {
-        Button(action: {
+        Button(action: {}) {
+            Image(systemName: "pencil")
+                .foregroundColor(.blue)
+                .imageScale(.large)
+        }
+        .onTapGesture {
             print("SessionListView: Rename button pressed")  // Log
             markSessionWithID(id: session.id!)
             print("SessionListView: Session to update = \(String(describing: session.name))")  // Log
             
             sheetConfig = .edit
             toggleEditMode()
-        }) {
-            Image(systemName: "pencil")
-                .foregroundColor(.blue)
-                .imageScale(.large)
         }
     }
     
     private func displayDeleteButton(session: Session) -> some View {
-        Button(action: {
+        Button(action: {}) {
+            Image(systemName: "trash")
+                .foregroundColor(.red)
+                .imageScale(.large)
+        }
+        .onTapGesture {
             print("SessionListView: Delete button pressed")  // Log
             let sessionID = session.id
             markSessionWithID(id: sessionID!)
             
             showDeleteConfirmation = true
             toggleEditMode()
-        }) {
-            Image(systemName: "trash")
-                .foregroundColor(.red)
-                .imageScale(.large)
         }
     }
     
