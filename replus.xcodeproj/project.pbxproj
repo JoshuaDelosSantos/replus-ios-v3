@@ -6,14 +6,24 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		03FF57462D2BD88A001B218D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03FF57452D2BD885001B218D /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		03FF57342D2BD82A001B218D /* replus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = replus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03FF57452D2BD885001B218D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		03FF57362D2BD82A001B218D /* replus */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = replus;
+			sourceTree = "<group>";
+		};
+		03FF57472D2BD960001B218D /* devlogs */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = devlogs;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +42,8 @@
 		03FF572B2D2BD82A001B218D = {
 			isa = PBXGroup;
 			children = (
+				03FF57472D2BD960001B218D /* devlogs */,
+				03FF57452D2BD885001B218D /* README.md */,
 				03FF57362D2BD82A001B218D /* replus */,
 				03FF57352D2BD82A001B218D /* Products */,
 			);
@@ -62,6 +74,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				03FF57362D2BD82A001B218D /* replus */,
+				03FF57472D2BD960001B218D /* devlogs */,
 			);
 			name = replus;
 			packageProductDependencies = (
@@ -109,6 +122,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03FF57462D2BD88A001B218D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
