@@ -56,7 +56,7 @@ Thought process:
 
 
 ### 5. View is not updating when delete button in edit mode is pressed.
-**WORKING PROGRESS...**
+**FIXED**
 - The swipe to delete works.
 - Edit mode delete button:
     - Delete's the session from coredatabase properly.
@@ -81,9 +81,35 @@ Code:
     }
 ```
 - Which is my renameButton that is next to the delete button, which is tied to the cardView.
-    
+**After solving the problem below (#6) everything seems to be working!**
 
 ### 6. In edit mode, rename button is not recognised when pressed.
-**WORKING PROGRESS...**
+**FIXED**
 - When in edit mode and I try to press the rename button.
 - It calls delete functionality instead.
+
+Code:
+```
+List {
+    ForEach(viewModel.sessions, id: \.id) { session in
+        HStack {
+            if isEditing {
+                displayDeleteButton(session: session)
+                .padding(.trailing, 8)
+                displayRenameButton(session: session)
+            }
+            SessionCardView(session: session)
+        }
+    }
+}
+
+```
+
+Thinking process:
+- This might mean that:
+    - Buttons are overalaping.
+    - Code issue.
+    - Views are overlaping.
+- Watched a youtube video.
+- **Added .onTapGesture{}**
+    
