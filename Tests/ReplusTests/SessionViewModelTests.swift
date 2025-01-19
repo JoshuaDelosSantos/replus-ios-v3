@@ -56,4 +56,21 @@ final class SessionViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.sessions.count, 1, "ViewModel should add one session.")
         XCTAssertEqual(viewModel.sessions.first?.name, "New Session", "Added sessions name should match.")
     }
+    
+    func testUpdateSession() {
+        // Given
+        let session = Session(context: moc)
+        session.id = UUID()
+        session.name = "Old Session"
+        session.modifiedAt = Date()
+        try? moc.save()
+        viewModel.fetchSessions()
+        
+        // When
+        viewModel.selectSession(id: session.id!)
+        viewModel.updateSession(newName: "Updated Session")
+        
+        // Then
+        XCTAssertEqual(viewModel.sessions.first?.name, "Updated Session", "Session name should be updated.")
+    }
 }
