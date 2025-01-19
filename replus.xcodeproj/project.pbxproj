@@ -10,14 +10,48 @@
 		03FF57462D2BD88A001B218D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03FF57452D2BD885001B218D /* README.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		036FF2BC2D3CB92A0032E3CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FF572C2D2BD82A001B218D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03FF57332D2BD82A001B218D;
+			remoteInfo = replus;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		036FF2B82D3CB92A0032E3CB /* ReplusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReplusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF57342D2BD82A001B218D /* replus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = replus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF57452D2BD885001B218D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		036FF2CC2D3CBBBE0032E3CB /* Exceptions for "Tests" folder in "replus" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ReplusTests/ReplusTests.swift,
+				ReplusTests/SessionViewModelTests.swift,
+			);
+			target = 03FF57332D2BD82A001B218D /* replus */;
+		};
+		036FF2CD2D3CBBBE0032E3CB /* Exceptions for "Tests" folder in "ReplusTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ReplusTests/ReplusTests.swift,
+				ReplusTests/SessionViewModelTests.swift,
+			);
+			target = 036FF2B72D3CB92A0032E3CB /* ReplusTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		036FF2732D3CB3EA0032E3CB /* Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				036FF2CC2D3CBBBE0032E3CB /* Exceptions for "Tests" folder in "replus" target */,
+				036FF2CD2D3CBBBE0032E3CB /* Exceptions for "Tests" folder in "ReplusTests" target */,
+			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
@@ -34,6 +68,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		036FF2B52D3CB92A0032E3CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF57312D2BD82A001B218D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				03FF57342D2BD82A001B218D /* replus.app */,
+				036FF2B82D3CB92A0032E3CB /* ReplusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +108,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		036FF2B72D3CB92A0032E3CB /* ReplusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 036FF2BE2D3CB92A0032E3CB /* Build configuration list for PBXNativeTarget "ReplusTests" */;
+			buildPhases = (
+				036FF2B42D3CB92A0032E3CB /* Sources */,
+				036FF2B52D3CB92A0032E3CB /* Frameworks */,
+				036FF2B62D3CB92A0032E3CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				036FF2BD2D3CB92A0032E3CB /* PBXTargetDependency */,
+			);
+			name = ReplusTests;
+			packageProductDependencies = (
+			);
+			productName = ReplusTests;
+			productReference = 036FF2B82D3CB92A0032E3CB /* ReplusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		03FF57332D2BD82A001B218D /* replus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03FF57422D2BD82C001B218D /* Build configuration list for PBXNativeTarget "replus" */;
@@ -100,6 +162,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					036FF2B72D3CB92A0032E3CB = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 03FF57332D2BD82A001B218D;
+					};
 					03FF57332D2BD82A001B218D = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -120,11 +186,19 @@
 			projectRoot = "";
 			targets = (
 				03FF57332D2BD82A001B218D /* replus */,
+				036FF2B72D3CB92A0032E3CB /* ReplusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		036FF2B62D3CB92A0032E3CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF57322D2BD82A001B218D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,6 +210,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		036FF2B42D3CB92A0032E3CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF57302D2BD82A001B218D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,7 +226,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		036FF2BD2D3CB92A0032E3CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03FF57332D2BD82A001B218D /* replus */;
+			targetProxy = 036FF2BC2D3CB92A0032E3CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		036FF2BF2D3CB92A0032E3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.app.ReplusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/replus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/replus";
+			};
+			name = Debug;
+		};
+		036FF2C02D3CB92A0032E3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.app.ReplusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/replus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/replus";
+			};
+			name = Release;
+		};
 		03FF57402D2BD82C001B218D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -324,6 +447,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		036FF2BE2D3CB92A0032E3CB /* Build configuration list for PBXNativeTarget "ReplusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				036FF2BF2D3CB92A0032E3CB /* Debug */,
+				036FF2C02D3CB92A0032E3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03FF572F2D2BD82A001B218D /* Build configuration list for PBXProject "replus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
