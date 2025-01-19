@@ -73,4 +73,21 @@ final class SessionViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(viewModel.sessions.first?.name, "Updated Session", "Session name should be updated.")
     }
+    
+    func testDeleteSession() {
+        // Given: Add a session
+        let session = Session(context: moc)
+        session.id = UUID()
+        session.name = "To Be Deleted"
+        session.modifiedAt = Date()
+        try? moc.save()
+        viewModel.fetchSessions()
+        
+        // When: Deleting the session
+        viewModel.selectSession(id: session.id!)
+        viewModel.deleteSession()
+        
+        // Then: Validate the session is deleted
+        XCTAssertEqual(viewModel.sessions.count, 0, "ViewModel should delete the session.")
+    }
 }
