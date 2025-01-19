@@ -10,12 +10,57 @@
 		03FF57462D2BD88A001B218D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03FF57452D2BD885001B218D /* README.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		036FF27C2D3CB4F40032E3CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FF572C2D2BD82A001B218D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03FF57332D2BD82A001B218D;
+			remoteInfo = replus;
+		};
+		036FF28E2D3CB5500032E3CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FF572C2D2BD82A001B218D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03FF57332D2BD82A001B218D;
+			remoteInfo = replus;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		036FF2782D3CB4F40032E3CB /* SessionListViewTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SessionListViewTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		036FF28A2D3CB5500032E3CB /* SessionViewModelTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SessionViewModelTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF57342D2BD82A001B218D /* replus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = replus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF57452D2BD885001B218D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		036FF2962D3CB5530032E3CB /* Exceptions for "Tests" folder in "replus" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SessionViewModelTest/SessionViewModelTest.swift,
+			);
+			target = 03FF57332D2BD82A001B218D /* replus */;
+		};
+		036FF2972D3CB5530032E3CB /* Exceptions for "Tests" folder in "SessionViewModelTest" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SessionViewModelTest/SessionViewModelTest.swift,
+			);
+			target = 036FF2892D3CB5500032E3CB /* SessionViewModelTest */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		036FF2732D3CB3EA0032E3CB /* Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				036FF2962D3CB5530032E3CB /* Exceptions for "Tests" folder in "replus" target */,
+				036FF2972D3CB5530032E3CB /* Exceptions for "Tests" folder in "SessionViewModelTest" target */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		03FF57362D2BD82A001B218D /* replus */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = replus;
@@ -29,6 +74,20 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		036FF2752D3CB4F40032E3CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		036FF2872D3CB5500032E3CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF57312D2BD82A001B218D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,6 +101,7 @@
 		03FF572B2D2BD82A001B218D = {
 			isa = PBXGroup;
 			children = (
+				036FF2732D3CB3EA0032E3CB /* Tests */,
 				03FF57472D2BD960001B218D /* devlogs */,
 				03FF57452D2BD885001B218D /* README.md */,
 				03FF57362D2BD82A001B218D /* replus */,
@@ -53,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				03FF57342D2BD82A001B218D /* replus.app */,
+				036FF2782D3CB4F40032E3CB /* SessionListViewTest.xctest */,
+				036FF28A2D3CB5500032E3CB /* SessionViewModelTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +122,46 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		036FF2772D3CB4F40032E3CB /* SessionListViewTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 036FF27E2D3CB4F40032E3CB /* Build configuration list for PBXNativeTarget "SessionListViewTest" */;
+			buildPhases = (
+				036FF2742D3CB4F40032E3CB /* Sources */,
+				036FF2752D3CB4F40032E3CB /* Frameworks */,
+				036FF2762D3CB4F40032E3CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				036FF27D2D3CB4F40032E3CB /* PBXTargetDependency */,
+			);
+			name = SessionListViewTest;
+			packageProductDependencies = (
+			);
+			productName = SessionListViewTest;
+			productReference = 036FF2782D3CB4F40032E3CB /* SessionListViewTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		036FF2892D3CB5500032E3CB /* SessionViewModelTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 036FF2902D3CB5500032E3CB /* Build configuration list for PBXNativeTarget "SessionViewModelTest" */;
+			buildPhases = (
+				036FF2862D3CB5500032E3CB /* Sources */,
+				036FF2872D3CB5500032E3CB /* Frameworks */,
+				036FF2882D3CB5500032E3CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				036FF28F2D3CB5500032E3CB /* PBXTargetDependency */,
+			);
+			name = SessionViewModelTest;
+			packageProductDependencies = (
+			);
+			productName = SessionViewModelTest;
+			productReference = 036FF28A2D3CB5500032E3CB /* SessionViewModelTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		03FF57332D2BD82A001B218D /* replus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03FF57422D2BD82C001B218D /* Build configuration list for PBXNativeTarget "replus" */;
@@ -73,6 +175,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				036FF2732D3CB3EA0032E3CB /* Tests */,
 				03FF57362D2BD82A001B218D /* replus */,
 				03FF57472D2BD960001B218D /* devlogs */,
 			);
@@ -93,6 +196,14 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					036FF2772D3CB4F40032E3CB = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 03FF57332D2BD82A001B218D;
+					};
+					036FF2892D3CB5500032E3CB = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 03FF57332D2BD82A001B218D;
+					};
 					03FF57332D2BD82A001B218D = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -113,11 +224,27 @@
 			projectRoot = "";
 			targets = (
 				03FF57332D2BD82A001B218D /* replus */,
+				036FF2772D3CB4F40032E3CB /* SessionListViewTest */,
+				036FF2892D3CB5500032E3CB /* SessionViewModelTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		036FF2762D3CB4F40032E3CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		036FF2882D3CB5500032E3CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF57322D2BD82A001B218D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +256,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		036FF2742D3CB4F40032E3CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		036FF2862D3CB5500032E3CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF57302D2BD82A001B218D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,7 +279,88 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		036FF27D2D3CB4F40032E3CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03FF57332D2BD82A001B218D /* replus */;
+			targetProxy = 036FF27C2D3CB4F40032E3CB /* PBXContainerItemProxy */;
+		};
+		036FF28F2D3CB5500032E3CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03FF57332D2BD82A001B218D /* replus */;
+			targetProxy = 036FF28E2D3CB5500032E3CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		036FF27F2D3CB4F40032E3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.app.SessionListViewTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/replus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/replus";
+			};
+			name = Debug;
+		};
+		036FF2802D3CB4F40032E3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.app.SessionListViewTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/replus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/replus";
+			};
+			name = Release;
+		};
+		036FF2912D3CB5500032E3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.app.SessionViewModelTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/replus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/replus";
+			};
+			name = Debug;
+		};
+		036FF2922D3CB5500032E3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.app.SessionViewModelTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/replus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/replus";
+			};
+			name = Release;
+		};
 		03FF57402D2BD82C001B218D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -317,6 +539,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		036FF27E2D3CB4F40032E3CB /* Build configuration list for PBXNativeTarget "SessionListViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				036FF27F2D3CB4F40032E3CB /* Debug */,
+				036FF2802D3CB4F40032E3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		036FF2902D3CB5500032E3CB /* Build configuration list for PBXNativeTarget "SessionViewModelTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				036FF2912D3CB5500032E3CB /* Debug */,
+				036FF2922D3CB5500032E3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03FF572F2D2BD82A001B218D /* Build configuration list for PBXProject "replus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
