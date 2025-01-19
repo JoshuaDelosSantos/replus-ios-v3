@@ -47,4 +47,13 @@ final class SessionViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.sessions.count, 1, "ViewModel should fetch one session.")
         XCTAssertEqual(viewModel.sessions.first?.name, "Test Session", "Session name should match the test data.")
     }
+    
+    func testAddSession() {
+        // When
+        viewModel.addSession(name: "New Session")
+        
+        // Then
+        XCTAssertEqual(viewModel.sessions.count, 1, "ViewModel should add one session.")
+        XCTAssertEqual(viewModel.sessions.first?.name, "New Session", "Added sessions name should match.")
+    }
 }
