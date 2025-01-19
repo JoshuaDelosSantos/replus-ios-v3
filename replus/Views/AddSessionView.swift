@@ -60,9 +60,9 @@ struct AddSessionView: View {
 }
 
 
-#Preview {
-    let persistenceController = PersistenceController(inMemory: true)
-    let viewModel = SessionViewModel(moc: persistenceController.container.viewContext)
-    
-    AddSessionView(viewModel: viewModel)
-}
+//#Preview {
+//    let persistenceController = PersistenceController(inMemory: true)
+//    let viewModel = SessionViewModel(moc: persistenceController.container.viewContext)
+//    
+//    AddSessionView(viewModel: viewModel)
+//}
