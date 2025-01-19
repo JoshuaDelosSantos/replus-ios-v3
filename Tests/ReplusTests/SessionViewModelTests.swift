@@ -13,8 +13,22 @@ import CoreData
 
 final class SessionViewModelTests: XCTestCase {
     
-    // Properties
+    /// Properties
     var viewModel: SessionViewModel!
-    var persistentContainer: NSPersistentContainer!
     var moc: NSManagedObjectContext!
+    
+    /// Setup
+    override func setUpWithError() throws {
+        let persistenceController = PersistenceController(inMemory: true)
+        let moc = persistenceController.container.viewContext
+        
+        // Initialise MOC and ViewModel
+        viewModel = SessionViewModel(moc: moc)
+    }
+    
+    override func tearDownWithError() throws {
+        viewModel = nil
+        moc = nil
+    }
+    
 }
