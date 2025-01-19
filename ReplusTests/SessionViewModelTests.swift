@@ -7,8 +7,14 @@
 
 
 import XCTest
+import CoreData
+@testable import replus
 
-final class SessionViewModelTests:XCTestCase {
+
+final class SessionViewModelTests: XCTestCase {
     
-    
+    // Properties
+    var viewModel: SessionViewModel!
+    var persistentContainer: NSPersistentContainer!
+    var moc: NSManagedObjectContext!
 }
