@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "32A65BF0-1829-4C98-89B9-7809841BB71B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tests/ReplusTests/SessionViewModelTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "SessionViewModelTests"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08 - e8358d6699db6be2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReplusTests.SessionViewModelTests.__allocating_init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; ReplusTests.SessionViewModelTests"
+                  moduleName = "ReplusTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josh/Desktop/coding_projects/replus-ios-v3/replus/Tests/ReplusTests/SessionViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08 - f44d6120a2454a44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReplusTests.SessionViewModelTests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; ReplusTests.SessionViewModelTests"
+                  moduleName = "ReplusTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josh/Desktop/coding_projects/replus-ios-v3/replus/Tests/ReplusTests/SessionViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17">
+               </Location>
+               <Location
+                  uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08 - 3029365c0b62686d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReplusTests.SessionViewModelTests.__allocating_init(selector: ObjectiveC.Selector) -&gt; ReplusTests.SessionViewModelTests"
+                  moduleName = "ReplusTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josh/Desktop/coding_projects/replus-ios-v3/replus/Tests/ReplusTests/SessionViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08 - fa97378015f1064"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReplusTests.SessionViewModelTests.init(selector: ObjectiveC.Selector) -&gt; ReplusTests.SessionViewModelTests"
+                  moduleName = "ReplusTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josh/Desktop/coding_projects/replus-ios-v3/replus/Tests/ReplusTests/SessionViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17">
+               </Location>
+               <Location
+                  uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08 - 2c3c371b159cf2b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReplusTests.SessionViewModelTests.__allocating_init() -&gt; ReplusTests.SessionViewModelTests"
+                  moduleName = "ReplusTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josh/Desktop/coding_projects/replus-ios-v3/replus/Tests/ReplusTests/SessionViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08 - be8bb8c852a2d43d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReplusTests.SessionViewModelTests.init() -&gt; ReplusTests.SessionViewModelTests"
+                  moduleName = "ReplusTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josh/Desktop/coding_projects/replus-ios-v3/replus/Tests/ReplusTests/SessionViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17">
+               </Location>
+               <Location
+                  uuid = "2DE3D061-90DE-47F5-B14C-1B5B37793A08 - c735eead9d3aab60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReplusTests.SessionViewModelTests.__deallocating_deinit"
+                  moduleName = "ReplusTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josh/Desktop/coding_projects/replus-ios-v3/replus/Tests/ReplusTests/SessionViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
