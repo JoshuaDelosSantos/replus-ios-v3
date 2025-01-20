@@ -10,7 +10,8 @@ import SwiftUI
 import CoreData
 
 
-/// Enum class for .sheets() - Allows dynamic sheets with 1 call.
+/// Enum class for .sheets()
+/// Allows dynamic sheets with 1 call.
 enum SheetConfig: Int, Identifiable {
     var id: Int {return self.rawValue}
     
