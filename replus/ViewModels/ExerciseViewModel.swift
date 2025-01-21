@@ -37,6 +37,27 @@ class ExerciseViewModel: ObservableObject {
         }
     }
     
+    func addExercise(name: String) {
+        guard let session = session else {
+            print("ExerciseViewModel: Cannot add exercise without a session.")
+            return
+        }
+        
+        let newExercise = Exercise(context: moc)
+        newExercise.id = UUID()
+        newExercise.name = name
+        newExercise.session = session
+        newExercise.modifiedAt = Date()
+        
+        do {
+            try saveContext()
+            print("ExerciseViewModel: Added exercise '\(name)' to session '\(session.name ?? "Unknown")'.")
+            fetchExercises()
+        } catch {
+            print("ExerciseViewModel: Failed to add exercise: \(error.localizedDescription)")
+        }
+    }
+    
     private func saveContext() throws {
         if moc.hasChanges {
             print("SessionViewModel: Saving changes...")  // Log
