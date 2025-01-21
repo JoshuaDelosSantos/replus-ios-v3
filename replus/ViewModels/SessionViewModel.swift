@@ -21,7 +21,7 @@ class SessionViewModel: ObservableObject {
         fetchSessions()
     }
 
-// MARK: - Fetch Sessions.
+    // MARK: - Fetch Sessions.
     func fetchSessions() {
         let request: NSFetchRequest<Session> = Session.fetchRequest()
         
@@ -40,7 +40,7 @@ class SessionViewModel: ObservableObject {
         }
     }
 
-// MARK: - Adding a Session.
+    // MARK: - Adding a Session.
     func addSession(name: String) {
         let newSession = Session(context: moc)
         
@@ -58,7 +58,7 @@ class SessionViewModel: ObservableObject {
         }
     }
 
-// MARK: - Updating a Session.
+    // MARK: - Updating a Session.
     func updateSession(newName: String) {
         guard let session = sessionToMark else {
             print("SessionViewModel: No session available to update.")  // Log
@@ -90,7 +90,7 @@ class SessionViewModel: ObservableObject {
         sessionToMark?.name
     }
     
-// MARK: - Delete a Session.
+    // MARK: - Delete a Session.
     func deleteSession() {
         guard let session = sessionToMark else {
             print("SessionViewModel: No session available to delete.")  // Log
@@ -111,7 +111,7 @@ class SessionViewModel: ObservableObject {
     }
     
 
-// MARK: - Helper functions.
+    // MARK: - Helper functions.
     private func saveContext() throws {
         if moc.hasChanges {
             print("SessionViewModel: Saving changes...")  // Log
