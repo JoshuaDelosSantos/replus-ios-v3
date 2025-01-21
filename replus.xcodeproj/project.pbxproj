@@ -30,6 +30,7 @@
 		036FF2CC2D3CBBBE0032E3CB /* Exceptions for "Tests" folder in "replus" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				ReplusTests/ExerciseViewModelTests.swift,
 				ReplusTests/ReplusTests.swift,
 				ReplusTests/SessionViewModelTests.swift,
 			);
@@ -38,6 +39,7 @@
 		036FF2CD2D3CBBBE0032E3CB /* Exceptions for "Tests" folder in "ReplusTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				ReplusTests/ExerciseViewModelTests.swift,
 				ReplusTests/ReplusTests.swift,
 				ReplusTests/SessionViewModelTests.swift,
 			);
