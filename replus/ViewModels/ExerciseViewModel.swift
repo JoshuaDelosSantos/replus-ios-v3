@@ -58,6 +58,20 @@ class ExerciseViewModel: ObservableObject {
         }
     }
     
+    func updateExercise(exercise: Exercise, name: String) {
+        exercise.name = name
+        exercise.modifiedAt = Date()
+
+        do {
+            try saveContext()
+            print("ExerciseViewModel: Updated exercise '\(exercise.name ?? "Unknown")'.")
+            fetchExercises()
+        } catch {
+            print("ExerciseViewModel: Failed to update exercise: \(error.localizedDescription)")
+        }
+    }
+    
+    
     private func saveContext() throws {
         if moc.hasChanges {
             print("SessionViewModel: Saving changes...")  // Log
