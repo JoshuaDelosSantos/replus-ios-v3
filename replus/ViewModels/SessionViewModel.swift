@@ -78,7 +78,7 @@ class SessionViewModel: ObservableObject {
         }
     }
     
-    
+    // TODO: Revise.
     func selectSession(id: UUID) {
         sessionToMark = getSessionById(id)
         if sessionToMark == nil {
