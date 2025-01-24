@@ -41,6 +41,21 @@ final class ExerciseViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.exercises.first?.name, "Test Exercise", "Exercise name should match the added exercise.")
     }
     
+    func testUpdateExercise() {
+        // Given
+        let session = createTestSession(name: "Test Session")
+        viewModel.session = session
+        viewModel.addExercise(name: "Original Exercise")
+        let exercise = viewModel.exercises.first!
+        
+        // When
+        viewModel.updateExercise(exercise: exercise, name: "Updated Exercise")
+        
+        // Then
+        XCTAssertEqual(viewModel.exercises.count, 1, "Exercises array should still contain one exercise after update.")
+        XCTAssertEqual(viewModel.exercises.first?.name, "Updated Exercise", "Exercise name should be updated.")
+    }
+    
     
     /// Helper functions
     private func createTestSession(name: String) -> Session {
