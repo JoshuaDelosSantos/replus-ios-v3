@@ -56,6 +56,20 @@ final class ExerciseViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.exercises.first?.name, "Updated Exercise", "Exercise name should be updated.")
     }
     
+    func testDeleteExercise() {
+        // Given
+        let session = createTestSession(name: "Test Delete Session")
+        viewModel.session = session
+        viewModel.addExercise(name: "Test Delete Exercise")
+        let exercise = viewModel.exercises.first!
+        
+        // When
+        viewModel.deleteExercise(exercise: exercise)
+        
+        // Then
+        XCTAssertEqual(viewModel.exercises.count, 0, "ViewModel should delete the session.")
+    }
+    
     
     /// Helper functions
     private func createTestSession(name: String) -> Session {
