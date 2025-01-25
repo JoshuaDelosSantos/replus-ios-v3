@@ -71,6 +71,16 @@ class ExerciseViewModel: ObservableObject {
         }
     }
     
+    func deleteExercise(exercise: Exercise) {
+        moc.delete(exercise)
+        print("ExercisieViewModel: Deleted exercise")  // Log
+        
+        do {
+            try saveContext()
+        } catch {
+            print("ExerciseViewModel: Failed to delete exercise: \(error.localizedDescription)")  // Log
+        }
+    }
     
     private func saveContext() throws {
         if moc.hasChanges {
