@@ -77,6 +77,7 @@ class ExerciseViewModel: ObservableObject {
         
         do {
             try saveContext()
+            fetchExercises()
         } catch {
             print("ExerciseViewModel: Failed to delete exercise: \(error.localizedDescription)")  // Log
         }
