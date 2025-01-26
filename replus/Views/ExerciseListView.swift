@@ -18,7 +18,24 @@ struct ExerciseListView: View {
     }
     
     var body: some View {
-        Text("Hello Exercies!")
+        NavigationView {
+            VStack {
+                if viewModel.exercises .isEmpty {
+                    Text("No exercises available")
+                        .foregroundColor(.gray)  // Theme
+                        .padding()
+                } else {
+                    List {
+                        ForEach(viewModel.exercises, id: \.id) { exercise in
+                            HStack {
+                                Text("\(String(describing: exercise.name))")
+                            }
+                        }
+                    }
+                }
+            } // VStack
+        } // NavigationView
+        .navigationTitle("Exercises")
     }
 }
 
