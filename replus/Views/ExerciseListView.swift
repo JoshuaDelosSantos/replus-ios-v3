@@ -34,8 +34,21 @@ struct ExerciseListView: View {
                     }
                 }
             } // VStack
+            .navigationTitle("Exercises")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {}) {
+                        Label("Add", systemImage: "plus")
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {}) {
+                        Text("Edit")
+                    }
+                }
+            }
         } // NavigationView
-        .navigationTitle("Exercises")
     }
 }
 
